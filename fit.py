@@ -42,6 +42,6 @@ if fileName is not None:
     st.pyplot(fig)
 
     plotData=dataCol.expander('fitted data',True)
-    plotDataFrame=pd.DataFrame(np.vstack((xfull,nfit(xnew),kfit(xnew))).transpose(),columns = ['wavelenght','n','k'])
+    plotDataFrame=pd.DataFrame(np.vstack((xnew,nfit(xnew),kfit(xnew))).transpose(),columns = ['wavelenght','n','k'])
     plotData.dataframe(plotDataFrame) 
     plotData.download_button('Download current spectra data',plotDataFrame.to_csv().encode('utf-8'),'fittedspectra.txt')
