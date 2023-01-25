@@ -18,7 +18,7 @@ plotCol, dataCol = st.columns([2,1])
 importExp=st.sidebar.expander('Import Option')
 fileName = importExp.file_uploader("Import spectra",accept_multiple_files=False)
 delimiter= importExp.selectbox('Delimiter:',('\t',';',','))
-step=st.number_input('select current wavelenght step',step=None)
+step=st.number_input('select current wavelenght step',value=int)
 skip=st.checkbox("First row is a string")
 row=0
 if skip is True:
