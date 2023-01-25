@@ -18,10 +18,14 @@ plotCol, dataCol = st.columns([2,1])
 importExp=st.sidebar.expander('Import Option')
 fileName = importExp.file_uploader("Import spectra",accept_multiple_files=False)
 delimiter= importExp.selectbox('Delimiter:',('\t',';',','))
-step=st.number_input('select current wavelenght step',step=int)
+step=st.number_input('select current wavelenght step',step=None)
 skip=st.checkbox("First row is a string")
+row=0
+if skip is True:
+    row=1
+
 if fileName is not None:
-    arr = np.loadtxt(fileName,delimiter=delimiter,skiprows=1)
+    arr = np.loadtxt(fileName,delimiter=delimiter,skiprows=row)
 
     x=arr[:,0]
     xless=np.arange(190,np.min(arr[:,0]),step)
