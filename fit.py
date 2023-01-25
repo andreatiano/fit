@@ -18,15 +18,17 @@ plotCol, dataCol = st.columns([2,1])
 importExp=st.sidebar.expander('Import Option')
 fileName = importExp.file_uploader("Import spectra",accept_multiple_files=False)
 delimiter= importExp.selectbox('Delimiter:',('\t',';',','))
+step=st.number_input('select wavelenght step')
+skip=st.checkbox("First row is a string")
 if fileName is not None:
     arr = np.loadtxt(fileName,delimiter=delimiter,skiprows=1)
 
     x=arr[:,0]
-    xless=np.arange(190,np.min(arr[:,0]),5)
+    xless=np.arange(190,np.min(arr[:,0]),step)
     n=arr[:,1]
     k=arr[:,2]
-    k2 = [0 for i in range(8)]
-    n2 = [0 for i in range(8)]
+    k2 = [0 for i in range((np.min(arr[:,0])-190)/step)]
+    n2 = [0 for i in range((np.min(arr[:,0])-190)/step)]
 
     xfull = np.concatenate((xless,x),axis=0)
     k = np.concatenate((k2,k),axis=0)
