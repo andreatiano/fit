@@ -37,11 +37,11 @@ if fileName is not None:
     kfit=interp1d(xfull, k, kind='cubic')
 
     fig=plt.figure(1)
-    plt.plot(xfull, n, '.', xfull, k, '.', xfull, nfit(xfull), '-',xfull, kfit (xfull), '-')
+    plt.plot(xfull, n, '.', xfull, k, '.', xnew, nfit(xnew), '-',xnew, kfit (xnew), '-')
     plt.legend(['n_data','k_data', 'n_fit', 'k_fit'], loc='best')
     st.pyplot(fig)
 
     plotData=dataCol.expander('fitted data',True)
-    plotDataFrame=pd.DataFrame(np.vstack((xfull,nfit(xfull),kfit(xfull))).transpose(),columns = ['wavelenght','n','k'])
+    plotDataFrame=pd.DataFrame(np.vstack((xfull,nfit(xnew),kfit(xnew))).transpose(),columns = ['wavelenght','n','k'])
     plotData.dataframe(plotDataFrame) 
     plotData.download_button('Download current spectra data',plotDataFrame.to_csv().encode('utf-8'),'fittedspectra.txt')
