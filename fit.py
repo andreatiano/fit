@@ -23,8 +23,6 @@ if fileName is not None:
 
     x=arr[:,0]
     xless=np.arange(190,np.min(arr[:,0]),5)
-    x=int(x)
-    xless=int(xless)
     n=arr[:,1]
     k=arr[:,2]
     k2 = [0 for i in range(8)]
