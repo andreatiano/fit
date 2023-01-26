@@ -41,11 +41,12 @@ if fileName is not None:
 
     nfit=interp1d(xfull, n, kind='cubic')
     kfit=interp1d(xfull, k, kind='cubic')
-
+    
+    specraPlot=plotCol.expander('Dispersion curves')
     fig=plt.figure(1)
     plt.plot(xfull, n, '.', xfull, k, '.', xnew, nfit(xnew), '-',xnew, kfit (xnew), '-')
     plt.legend(['n_data','k_data', 'n_fit', 'k_fit'], loc='best')
-    st.pyplot(fig)
+    specraPlot.pyplot(fig)
 
     plotData=dataCol.expander('fitted data',True)
     plotDataFrame=pd.DataFrame(np.vstack((xnew,nfit(xnew),kfit(xnew))).transpose(),columns = ['wavelenght','n','k'])
