@@ -53,6 +53,8 @@ if fileName is not None:
     fig=plt.figure(1)
     plt.plot(xfull, n, '.', xfull, k, '.', xnew, nfit(xnew), '-',xnew, kfit (xnew), '-')
     plt.legend(['n_data','k_data', 'n_fit', 'k_fit'], loc='best')
+    plt.xlabel("Wavelenght [nm]")
+    plt.ylabel("n,k")
     specraPlot.pyplot(fig)
 
     plotData=dataCol.expander('fitted data',True)
