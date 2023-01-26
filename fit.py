@@ -16,9 +16,10 @@ st.set_page_config(layout="wide")
 plotCol, dataCol = st.columns([2,1])
 
 importExp=st.sidebar.expander('Import Option')
+skip=st.sidebar.checkbox("First row is a string")
 fileName = importExp.file_uploader("Import spectra",accept_multiple_files=False)
 delimiter= importExp.selectbox('Delimiter:',('\t',';',','))
-skip=st.checkbox("First row is a string")
+skip=st.sidebar.checkbox("First row is a string")
 row=0
 
 if skip is True:
