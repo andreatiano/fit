@@ -31,7 +31,7 @@ if fileName is not None:
     x=arr[:,0]
     xmin=np.min(arr[:,0])
     step=x[1]-x[0]
-    firstWave=dataCol.number_input("Insert the first wavelenght of the spectra", min_value=float(100), max_value= xmin, step=step, value= xmin)
+    firstWave=plotCol.number_input("Insert the first wavelenght of the spectra", min_value=float(100), max_value= xmin, step=step, value= xmin)
     xfull=x
     n=arr[:,1]
     k=arr[:,2]
@@ -49,7 +49,7 @@ if fileName is not None:
     nfit=interp1d(xfull, n, kind='cubic')
     kfit=interp1d(xfull, k, kind='cubic')
     
-    specraPlot=plotCol.expander('Dispersion curves')
+    specraPlot=plotCol.expander('Dispersion curves',True)
     fig=plt.figure(1)
     plt.plot(xfull, n, '.', xfull, k, '.', xnew, nfit(xnew), '-',xnew, kfit (xnew), '-')
     plt.legend(['n_data','k_data', 'n_fit', 'k_fit'], loc='best')
