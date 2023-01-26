@@ -17,7 +17,7 @@ plotCol, dataCol = st.columns([2,1])
 
 
 importExp=st.sidebar.expander('Import Option')
-skip=importEx.checkbox("First row is a string")
+skip=importExp.checkbox("First row is a string")
 fileName = importExp.file_uploader("Import spectra",accept_multiple_files=False)
 delimiter= importExp.selectbox('Delimiter:',('\t',';',','))
 
