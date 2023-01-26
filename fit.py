@@ -14,7 +14,7 @@ import pandas as pd
 
 st.set_page_config(layout="wide")
 plotCol, dataCol = st.columns([2,1])
-st.sidebar.title(':blue[Dispersion fitting] :sunglasses:')
+st.sidebar.title(':blue[Dispersion Interpolation] :sunglasses:')
 
 importExp=st.sidebar.expander('Import Option')
 skip=importExp.checkbox("First row is a string")
