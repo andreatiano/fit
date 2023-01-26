@@ -22,11 +22,12 @@ if fileName is not None:
     arr = np.loadtxt(fileName,delimiter=delimiter,skiprows=row)
     x=arr[:,0]
     step=x[1]-x[0]
-    xless=np.arange(190,np.min(arr[:,0]),step)
+    firsWave=st.insert_number("Insert the first wavelenght of the spectra", min_value=100, max_value=np.min(arr[:,0], step=step, value=np.min(arr[:,0])
+    xless=np.arange(firsWave,np.min(arr[:,0]),step)
     n=arr[:,1]
     k=arr[:,2]
-    k2 = [0 for i in range(int((np.min(x)-190)/step))]
-    n2 = [0 for i in range(int((np.min(x)-190)/step))]
+    k2 = [0 for i in range(int((np.min(x)-firsWave)/step))]
+    n2 = [0 for i in range(int((np.min(x)-firsWave)/step))]
 
     xfull = np.concatenate((xless,x),axis=0)
     k = np.concatenate((k2,k),axis=0)
