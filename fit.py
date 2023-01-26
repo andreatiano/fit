@@ -34,15 +34,15 @@ if fileName is not None:
     firstWave=plotCol.number_input("Insert the first wavelenght of the spectra", min_value=float(100), max_value= xmin, step=step, value= xmin)
     xfull=x
     n=arr[:,1]
-    nmin=np.min(arr[:,1])
+    nmin=arr[0,1]
     k=arr[:,2]
-    kmin=np.min(arr[:,2])
+    kmin=arr[0,2]
     
     if firstWave< xmin:                                                                  
         xless=np.arange(firstWave, xmin,step)
         xfull = np.concatenate((xless,x),axis=0)
-        k2 = [0 for i in range(int(( xmin-firstWave)/step))]
-        n2 = [0 for i in range(int(( xmin-firstWave)/step))]
+        k2 = [kmin for i in range(int(( xmin-firstWave)/step))]
+        n2 = [nmin for i in range(int(( xmin-firstWave)/step))]
         k = np.concatenate((k2,k),axis=0)
         n= np.concatenate((n2,n),axis=0)
         
