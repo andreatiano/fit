@@ -15,16 +15,18 @@ import pandas as pd
 st.set_page_config(layout="wide")
 plotCol, dataCol = st.columns([2,1])
 
+
 importExp=st.sidebar.expander('Import Option')
 skip=importEx.checkbox("First row is a string")
 fileName = importExp.file_uploader("Import spectra",accept_multiple_files=False)
 delimiter= importExp.selectbox('Delimiter:',('\t',';',','))
 
-row=0
-if skip is True:
-    row=1
+
 
 if fileName is not None:
+    row=0
+    if skip is True:
+        row=1
     arr = np.loadtxt(fileName,delimiter=delimiter,skiprows=row)
     x=arr[:,0]
     step=x[1]-x[0]
