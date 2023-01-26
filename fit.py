@@ -34,7 +34,9 @@ if fileName is not None:
     firstWave=plotCol.number_input("Insert the first wavelenght of the spectra", min_value=float(100), max_value= xmin, step=step, value= xmin)
     xfull=x
     n=arr[:,1]
+    nmin=np.min(arr[:,1])
     k=arr[:,2]
+    kmin=np.min(arr[:,2])
     
     if firstWave< xmin:                                                                  
         xless=np.arange(firstWave, xmin,step)
