@@ -31,7 +31,7 @@ if fileName is not None:
     x=arr[:,0]
     xmin=np.min(arr[:,0])
     step=x[1]-x[0]
-    firstWave=plotCol.number_input("Insert the first wavelenght of the spectra", min_value=float(100), max_value= xmin, step=step, value= xmin)
+    firstWave=plotCol.number_input("Insert the first wavelenght of the dispersion", min_value=float(100), max_value= xmin, step=step, value= xmin)
     xfull=x
     n=arr[:,1]
     nmin=arr[0,1]
@@ -54,12 +54,12 @@ if fileName is not None:
     specraPlot=plotCol.expander('Dispersion curves',True)
     fig=plt.figure(1)
     plt.plot(xfull, n, '.', xfull, k, '.', xnew, nfit(xnew), '-',xnew, kfit (xnew), '-')
-    plt.legend(['n_data','k_data', 'n_fit', 'k_fit'], loc='best')
+    plt.legend(['n_data','k_data', 'n_interp', 'k_interp'], loc='best')
     plt.xlabel("Wavelenght [nm]")
     plt.ylabel("n,k")
     specraPlot.pyplot(fig)
 
-    plotData=dataCol.expander('fitted data',True)
+    plotData=dataCol.expander('Interpolated data',True)
     plotDataFrame=pd.DataFrame(np.vstack((xnew,nfit(xnew),kfit(xnew))).transpose(),columns = ['wavelenght','n','k'])
     plotData.dataframe(plotDataFrame) 
-    plotData.download_button('Download current spectra data',plotDataFrame.to_csv(header=False,index=False,sep ='\t').encode('utf-8'),'fittedspectra.txt')
+    plotData.download_button('Download current dispersion data',plotDataFrame.to_csv(header=False,index=False,sep ='\t').encode('utf-8'),'interpolated_spectra.txt')
