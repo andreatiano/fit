@@ -36,7 +36,7 @@ if fileName is not None:
     n=arr[:,1]
     k=arr[:,2]
     
-    if firstWave!= xmin:                                                                  
+    if firstWave< xmin:                                                                  
         xless=np.arange(firstWave, xmin,step)
         xfull = np.concatenate((xless,x),axis=0)
         k2 = [0 for i in range(int(( xmin-firstWave)/step))]
