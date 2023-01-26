@@ -60,6 +60,6 @@ if fileName is not None:
     specraPlot.pyplot(fig)
 
     plotData=dataCol.expander('Interpolated data',True)
-    plotDataFrame=pd.DataFrame(np.vstack((xnew,nfit(xnew),kfit(xnew))).transpose(),columns = ['wavelenght','n','k'])
+    plotDataFrame=pd.DataFrame(np.vstack((xnew.reverse,nfit(xnew).reverse,kfit(xnew).reverse)).transpose(),columns = ['wavelenght','n','k'])
     plotData.dataframe(plotDataFrame) 
     plotData.download_button('Download current dispersion data',plotDataFrame.to_csv(header=False,index=False,sep ='\t').encode('utf-8'),'interpolated_spectra.txt')
