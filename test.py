@@ -21,17 +21,21 @@ if fileName is not None:
         row=1
     arr = np.loadtxt(fileName,delimiter=delimiter,skiprows=row)
     x=arr[:,0]
+    xmin=np.min(arr[:,0])
     step=x[1]-x[0]
-    firsWave=st.number_input("Insert the first wavelenght of the spectra", min_value=100, max_value=np.min(arr[:,0], step=step, value=np.min(arr[:,0])
-    xless=np.arange(firsWave,np.min(arr[:,0]),step)
+    firstWave=st.number_input("Insert the first wavelenght of the spectra", min_value=100, max_value= xmin, step=step, value= xmin)
+    xfull=x
     n=arr[:,1]
     k=arr[:,2]
-    k2 = [0 for i in range(int((np.min(x)-firsWave)/step))]
-    n2 = [0 for i in range(int((np.min(x)-firsWave)/step))]
-
-    xfull = np.concatenate((xless,x),axis=0)
-    k = np.concatenate((k2,k),axis=0)
-    n= np.concatenate((n2,n),axis=0)
+    
+    if firstWave!= xmin:                                                                  
+        xless=np.arange(firstWave, xmin,step)
+        xfull = np.concatenate((xless,x),axis=0)
+        k2 = [0 for i in range(int(( xmin-firsWave)/step))]
+        n2 = [0 for i in range(int(( xmin-firsWave)/step))]
+        k = np.concatenate((k2,k),axis=0)
+        n= np.concatenate((n2,n),axis=0)
+        
     xnew=np.arange(np.min(xfull),np.max(arr[:,0])+1,1)
 
     nfit=interp1d(xfull, n, kind='cubic')
