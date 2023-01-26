@@ -52,4 +52,4 @@ if fileName is not None:
     plotData=dataCol.expander('fitted data',True)
     plotDataFrame=pd.DataFrame(np.vstack((xnew,nfit(xnew),kfit(xnew))).transpose(),columns = ['wavelenght','n','k'])
     plotData.dataframe(plotDataFrame) 
-    plotData.download_button('Download current spectra data',plotDataFrame.to_csv(header=False,index=False).encode('utf-8'),'fittedspectra.txt')
+    plotData.download_button('Download current spectra data',plotDataFrame.to_csv(header=False,index=False,sep ='\t').encode('utf-8'),'fittedspectra.txt')
