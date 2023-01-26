@@ -14,11 +14,11 @@ import pandas as pd
 
 st.set_page_config(layout="wide")
 plotCol, dataCol = st.columns([2,1])
-
+st.title('blue[Dispersion fitting] :sunglasses:')
 
 importExp=st.sidebar.expander('Import Option')
 skip=importExp.checkbox("First row is a string")
-fileName = importExp.file_uploader("Import spectra",accept_multiple_files=False)
+fileName = importExp.file_uploader("Import dispersion",accept_multiple_files=False)
 delimiter= importExp.selectbox('Delimiter:',('\t',';',','))
 
 
